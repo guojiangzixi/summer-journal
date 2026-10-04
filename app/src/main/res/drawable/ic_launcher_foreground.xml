@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  自适应图标前景层。
+  可视安全区是 108 × 108 里的中间 72 × 72（即 18..90），
+  所有内容必须落在这个范围里，否则会被系统裁掉。
+  图形语义：一本摊开的手札 + 上面一轮夏日太阳。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 太阳 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M54,22.5 m-7.5,0 a7.5,7.5 0 1,0 15,0 a7.5,7.5 0 1,0 -15,0" />
+
+    <!-- 手札封面（带圆角的页）-->
+    <path
+        android:fillColor="#F2FFFFFF"
+        android:pathData="M43,36 L65,36 A7,7 0 0 1 72,43 L72,71 A7,7 0 0 1 65,78 L43,78 A7,7 0 0 1 36,71 L36,43 A7,7 0 0 1 43,36 Z" />
+
+    <!-- 三条内容线 -->
+    <path android:fillColor="#FFB9AEDC" android:pathData="M44,47 L64,47 L64,50.4 L44,50.4 Z" />
+    <path android:fillColor="#FFC9C1E9" android:pathData="M44,56 L64,56 L64,59.4 L44,59.4 Z" />
+    <path android:fillColor="#FFD7D0EE" android:pathData="M44,65 L57,65 L57,68.4 L44,68.4 Z" />
+
+</vector>

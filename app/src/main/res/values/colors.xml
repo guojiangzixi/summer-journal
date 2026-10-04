@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 与设计 token 保持一致：改这里要同步改 SummerPalette.kt -->
+    <color name="bg_warm_white">#F8F4F2</color>
+    <color name="bg_night_blue">#1F2547</color>
+    <color name="brand_dusk">#5B5AA0</color>
+    <color name="brand_lilac">#8E82D6</color>
+    <color name="brand_sunset_pink">#E8A3AE</color>
+    <color name="brand_amber">#F09A5C</color>
+    <color name="brand_amber_light">#FFC98F</color>
+    <color name="brand_teal">#5ECBC2</color>
+    <color name="brand_sky_deep">#1B2450</color>
+    <color name="ink">#2A2838</color>
+    <color name="ic_launcher_background">#1B2450</color>
+</resources>

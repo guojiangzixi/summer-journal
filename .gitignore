@@ -1,0 +1,33 @@
+# ══════════════════════════════════════════════════════════
+#  夏日手札 · 不要提交的东西
+# ══════════════════════════════════════════════════════════
+
+# ── 密钥：最高优先级，一旦泄露等于把 App 的发布权交出去 ──
+*.jks
+*.keystore
+keystore.properties
+**/keystore.properties
+
+# ── 本机环境相关：每台机器都不一样，提交了会互相打架 ──
+local.properties
+.gradle/
+.idea/
+*.iml
+captures/
+.DS_Store
+Thumbs.db
+
+# ── 构建产物 ──
+build/
+*.apk
+*.aab
+*.ap_
+*.dex
+output.json
+release/
+APK/
+
+# ── 日志与临时文件 ──
+*.log
+*.hprof
+.kotlin/

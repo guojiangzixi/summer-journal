@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  备份与设备迁移规则（Android 12 / API 31+ 用 dataExtractionRules）。
+  与 backup_rules.xml 保持同样的取舍。
+
+  ★ 和 backup_rules.xml 一样：<include> 是白名单语义，
+    不需要（也不能）用 <exclude domain="file" path="cache/" /> 去排缓存 ——
+    cache 是独立 domain，写成 domain="file" 会被 Lint 判为错误并阻断 release 构建。
+
+  教务 Cookie 存在 app_webview/ 下，不在下面任何 include 的范围内，天然不会被备份。
+-->
+<data-extraction-rules>
+
+    <!-- 云备份：换手机时恢复 -->
+    <cloud-backup>
+        <include domain="database" path="." />
+        <include domain="sharedpref" path="." />
+        <include domain="file" path="datastore/" />
+        <include domain="file" path="attachments/" />
+    </cloud-backup>
+
+    <!-- 设备间直传：同上 -->
+    <device-transfer>
+        <include domain="database" path="." />
+        <include domain="sharedpref" path="." />
+        <include domain="file" path="datastore/" />
+        <include domain="file" path="attachments/" />
+    </device-transfer>
+
+</data-extraction-rules>

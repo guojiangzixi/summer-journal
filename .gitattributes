@@ -1,0 +1,23 @@
+# 统一换行符：仓库内一律 LF，Windows 脚本除外。
+# 这样 Windows 上开发、Linux 上 CI 构建，diff 不会因为 CRLF 全是噪音。
+* text=auto eol=lf
+
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+gradlew text eol=lf
+
+# 二进制文件不要做任何转换
+*.jar   binary
+*.jks   binary
+*.keystore binary
+*.apk   binary
+*.png   binary
+*.jpg   binary
+*.webp  binary
+*.ttf   binary
+*.otf   binary
+*.so    binary
+
+# 生成物不参与 diff 统计
+*.md    linguist-documentation
+docs/* linguist-documentation

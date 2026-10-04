@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android 9+ 默认禁止明文 HTTP。
+  教务系统是 http:// 的，所以必须放行 —— 但**只放行这一个域名**，
+  其余一律强制 HTTPS。不要图省事设 android:usesCleartextTraffic="true"。
+-->
+<network-security-config>
+
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">its.csu.edu.cn</domain>
+        <domain includeSubdomains="true">csujwc.its.csu.edu.cn</domain>
+    </domain-config>
+
+</network-security-config>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  备份规则（Android 11 及以下由 fullBackupContent 指向本文件）。
+
+  关键取舍：
+  · 数据库和设置**要备份** —— 用户换手机不该丢掉一学期的课表
+  · 附件要备份 —— 手札里的照片/录音是用户真正在乎的东西
+  · 教务 Cookie **绝不备份** —— WebView 的数据在 app_webview/ 下，
+    不在 filesDir 里，所以不会被下面这些 include 覆盖到（这是有意的）
+
+  ★ 注意：写了 <include> 之后是**白名单**语义 —— 只有列出的路径会被备份，
+    其余一律不备。所以不需要再写 cache 的 exclude：
+    cache 目录本来就不在备份范围内，而
+    <exclude domain="file" path="cache/" /> 是**错的** ——
+    cache 是独立的 domain，不属于 domain="file"，Lint 会直接判定为错误
+    并阻断 release 构建（FullBackupContent）。
+-->
+<full-backup-content>
+    <include domain="database" path="." />
+    <include domain="sharedpref" path="." />
+    <include domain="file" path="datastore/" />
+    <include domain="file" path="attachments/" />
+</full-backup-content>

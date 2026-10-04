@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      基础主题。
+      真正的配色由 Compose 的 SummerJournalTheme 负责，
+      这里只需要保证「冷启动那一帧」不闪白/不闪黑、状态栏透明。
+    -->
+    <style name="Theme.SummerJournal" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/bg_warm_white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+    </style>
+
+    <!--
+      启动页：用 core-splashscreen，避免冷启动白屏。
+      背景色与 App 主背景一致，视觉上是「渐变出现」而不是「跳一下」。
+    -->
+    <style name="Theme.SummerJournal.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/bg_warm_white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenAnimationDuration">400</item>
+        <item name="postSplashScreenTheme">@style/Theme.SummerJournal</item>
+    </style>
+
+</resources>

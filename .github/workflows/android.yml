@@ -1,0 +1,84 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+# 打 tag 时要创建 Release，需要写权限
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 单元测试 + 构建 Debug APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 配置 JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # runner 自带 Android SDK，这一步负责接受许可并暴露 ANDROID_HOME
+      - name: 准备 Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: 配置 Gradle（含依赖缓存）
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: 赋予 gradlew 可执行权限
+        run: chmod +x gradlew
+
+      # 解析器是全项目最容易出错的地方，测试跑不过就不该出包
+      - name: 跑单元测试
+        run: ./gradlew testDebugUnitTest --no-daemon --stacktrace
+
+      - name: 构建 Debug APK
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: 收集 APK
+        run: |
+          mkdir -p dist
+          cp app/build/outputs/apk/debug/app-debug.apk "dist/SummerJournal-debug.apk"
+          ls -lh dist/
+
+      - name: 上传测试报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: app/build/reports/tests/
+          if-no-files-found: ignore
+
+      - name: 上传 APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: SummerJournal-debug
+          path: dist/*.apk
+          if-no-files-found: error
+
+      # 打 tag（如 v1.3.0）时自动发 Release，APK 作为附件
+      - name: 重命名 APK 用于 Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: cp dist/SummerJournal-debug.apk "dist/SummerJournal-${{ github.ref_name }}-debug.apk"
+
+      - name: 创建 Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/SummerJournal-*-debug.apk
+          generate_release_notes: true
+          draft: false
+          prerelease: false

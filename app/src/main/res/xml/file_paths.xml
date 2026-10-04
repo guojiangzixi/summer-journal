@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  FileProvider 路径映射。
+  只暴露 attachments 目录 —— 不要把 filesDir 整个暴露出去，
+  那会把数据库、DataStore 也一起开放给外部读取。
+-->
+<paths>
+    <files-path
+        name="attachments"
+        path="attachments/" />
+    <cache-path
+        name="cache_share"
+        path="share/" />
+</paths>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">夏日手札</string>
+
+    <!-- 教务导入 -->
+    <string name="jwxt_login_title">登录学校教务系统</string>
+
+    <!-- 底部导航 -->
+    <string name="tab_calendar">日历</string>
+    <string name="tab_timetable">课表</string>
+    <string name="tab_memo">手札</string>
+    <string name="tab_profile">我的</string>
+
+    <!-- 日历 -->
+    <string name="calendar_today">今天</string>
+    <string name="calendar_no_event">今天还没有安排</string>
+    <string name="calendar_new_event">新建日程</string>
+    <string name="event_title_hint">准备做什么？</string>
+    <string name="event_save">保存日程</string>
+
+    <!-- 课表 -->
+    <string name="timetable_mode_weekdays">只看工作日</string>
+    <string name="timetable_mode_week">显示周末</string>
+    <string name="timetable_mode_scroll">横滑</string>
+    <string name="timetable_add_course">添加课程</string>
+    <string name="timetable_import">教务一键导入</string>
+    <string name="timetable_manual">手动录入</string>
+    <string name="timetable_empty">这个学期还没有课程，点右上角添加或从教务导入</string>
+
+    <!-- 手札 -->
+    <string name="memo_title">手札</string>
+    <string name="memo_new">新建手札</string>
+    <string name="memo_empty">还没有记录，从今天的天色开始吧</string>
+    <string name="memo_body_hint">写点什么…</string>
+    <string name="memo_change_cover">换封面</string>
+    <string name="memo_add_audio">音频</string>
+    <string name="memo_add_image">图片</string>
+    <string name="memo_add_file">文件</string>
+    <string name="memo_add_sheet">表格</string>
+
+    <!-- 天气 -->
+    <string name="weather_title">天气</string>
+    <string name="weather_current_location">当前定位</string>
+    <string name="weather_need_location">打开定位以显示你所在位置的天气</string>
+    <string name="weather_pick_city">手动选择城市</string>
+    <string name="weather_search_hint">搜索城市名</string>
+    <string name="weather_no_data">暂时拿不到天气，稍后再试</string>
+    <string name="weather_retry">重试</string>
+    <string name="weather_seven_days">未来 7 天</string>
+    <string name="weather_air_quality">空气质量</string>
+    <string name="weather_life_index">生活指数</string>
+
+    <!-- 权限引导 -->
+    <string name="perm_guide_title">让提醒准点响</string>
+    <string name="perm_guide_subtitle">3 步，约 30 秒</string>
+    <string name="perm_notification">通知权限</string>
+    <string name="perm_exact_alarm">精确闹钟</string>
+    <string name="perm_battery">后台运行不被清理</string>
+    <string name="perm_granted">已开启</string>
+    <string name="perm_not_granted">未开启</string>
+    <string name="perm_go_settings">去设置</string>
+    <string name="perm_later">稍后再说</string>
+
+    <!-- 设置 -->
+    <string name="settings_appearance">外观与数据</string>
+    <string name="settings_background">背景</string>
+    <string name="settings_theme">主题</string>
+    <string name="settings_background_theme">背景与主题</string>
+    <string name="settings_calendar">日历</string>
+    <string name="settings_timetable">课表</string>
+    <string name="settings_weather">天气</string>
+    <string name="settings_show_holiday">显示法定节假日</string>
+    <string name="settings_show_lunar">显示农历与节气</string>
+    <string name="settings_default_reminder">默认提醒</string>
+    <string name="settings_week_start">每周起始</string>
+    <string name="settings_current_semester">当前学期</string>
+    <string name="settings_class_reminder">课程提醒</string>
+    <string name="settings_city">城市</string>
+    <string name="settings_pick_city">手动选择</string>
+    <string name="settings_background_image">背景图片</string>
+    <string name="settings_remove_image">移除图片</string>
+    <string name="settings_apply">应用背景</string>
+    <string name="settings_reset">恢复默认</string>
+
+    <!-- 通用 -->
+    <string name="action_cancel">取消</string>
+    <string name="action_save">保存</string>
+    <string name="action_delete">删除</string>
+    <string name="action_done">完成</string>
+    <string name="action_back">返回</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_add">添加</string>
+</resources>
