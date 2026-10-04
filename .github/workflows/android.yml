@@ -54,8 +54,28 @@ jobs:
       - name: 配置 Gradle（含依赖缓存）
         uses: gradle/actions/setup-gradle@v4
 
+      # 依赖解析失败是最难排查的一类 CI 问题，先把各源的可达性打出来
+      - name: 检查依赖源连通性
+        run: |
+          for u in \
+            https://dl.google.com/dl/android/maven2/ \
+            https://repo.maven.apache.org/maven2/ \
+            https://plugins.gradle.org/m2/ \
+            https://services.gradle.org/distributions/ ; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$u" 2>/dev/null || echo ERR)
+            echo "$u -> $code"
+          done
+
       - name: 赋予 gradlew 可执行权限
         run: chmod +x gradlew
+
+      # wrapper 里指向的是腾讯镜像（方便国内本地构建）；
+      # runner 在海外，官方发行源更直接。仅改 CI 这次运行，不动仓库里的文件。
+      - name: 切换到官方 Gradle 发行源
+        run: |
+          sed -i 's|mirrors\.cloud\.tencent\.com/gradle/|services.gradle.org/distributions/|' \
+            gradle/wrapper/gradle-wrapper.properties
+          grep distributionUrl gradle/wrapper/gradle-wrapper.properties
 
       # 解析器是全项目最容易出错的地方，测试跑不过就不该出包
       - name: 跑单元测试
